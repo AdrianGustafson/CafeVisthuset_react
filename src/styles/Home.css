@@ -1,0 +1,14 @@
+.preview-link, .preview-link:hover {
+    text-decoration: none;
+}
+
+.page-preview {
+  border: 2px solid black;
+  margin: 0% 2%;
+}
+
+.page-preview-img {
+  height: 30%;
+  padding-top: 10%;
+  margin-bottom: 10%;
+}
