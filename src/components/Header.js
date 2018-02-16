@@ -19,6 +19,15 @@ class Header extends React.Component {
 
               <li className="nav-item">
                 <NavLink
+                  to="/"
+                  className="nav-link"
+                  activeClassName='active'>
+                  Hem
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
                   to="/menu"
                   className="nav-link"
                   activeClassName='active'>
@@ -28,7 +37,7 @@ class Header extends React.Component {
 
               <li className="nav-item">
                 <NavLink
-                  to="/"
+                  to="/bikes"
                   className="nav-link"
                   activeClassName="active">
                   Cykeluthyrning
@@ -37,7 +46,7 @@ class Header extends React.Component {
 
               <li className="nav-item">
                 <NavLink
-                  to="/"
+                  to="/packages"
                   className="nav-link"
                   activeClassName="active">
                   Paketupplevelser
@@ -55,7 +64,7 @@ class Header extends React.Component {
 
               <li className="nav-item">
                 <NavLink
-                  to="/"
+                  to="/about"
                   className="nav-link"
                   activeClassName="active">
                   Om oss

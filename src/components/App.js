@@ -6,8 +6,11 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import '../styles/App.css';
 import '../styles/index.css';
 import '../styles/Home.css';
+import '../styles/Menu.css';
 
 // Components
+import About from './About';
+import Bikes from './Bikes';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
@@ -48,6 +51,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path="/menu" component={Menu} />
+            <Route path="/about" component={About}/>
+            <Route path="/bikes" component={Bikes}/>
           </Switch>
           <Footer />
         </div>
