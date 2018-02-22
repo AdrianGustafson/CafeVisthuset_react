@@ -20,30 +20,38 @@ class MenuItemComponent extends React.Component {
     if (this.state.toggle){
       const markup = { __html: marked(this.props.text) };
       return (
-        <div className="menu-item-expanded col-md-12" onClick={this.expand}>
+        <div className="menu-item-expanded col-md-12">
           <div className="menu-image">
             <img src={this.props.image} alt=""/>
-            <div className="row image-content-expanded">
-                <div className=" col-xs-12 col-md-8">
-                  <h2>{this.props.title}</h2>
-                  <div dangerouslySetInnerHTML={markup}></div>
+            <div className="image-content-expanded">
+              <div className="container">
+                <div className="row">
+                  <div className="col-xs-12 col-md-8">
+                    <h2>{this.props.title}</h2>
+                    <div dangerouslySetInnerHTML={markup}></div>
+                  </div>
+                  <div className="col-md-4 d-none d-md-block">
+                    <p>Placeholder...</p>
+                  </div>
+
+                  <button className="menu-item__button menu-item--expanded" onClick={this.expand}>stäng</button>
+
                 </div>
-                <div className="col-md-4">
-                  <p>Placeholder...</p>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
           </div>
       )
     }
     else
       return (
-        <div className="menu-item col-md-5 col-s-12" onClick={this.expand}>
+        <div className="menu-item col-md-5 col-s-12">
           <div className="menu-image">
             <img src={this.props.image} alt=""/>
             <div className="image-content">
               <h2><span>{this.props.title}</span></h2>
               <p><span>{this.props.shorttext}</span></p>
+              <button className="menu-item__button" onClick={this.expand}>Läs mer!</button>
             </div>
           </div>
         </div>

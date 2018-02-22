@@ -1,5 +1,6 @@
 import React from 'react';
 import MetaTags from 'react-meta-tags';
+import Calendar from 'react-calendar';
 
 //import RentalFormComponent from './RentalForm';
 
@@ -17,9 +18,14 @@ class BikesComponent extends React.Component {
           <div className="row">
             <div className="col-xs-12 col-md-8">
               <p>Här ska det komma texter...</p>
+
             </div>
           <div className="col-xs-12 col-md-4">
             <p>Här kommer bokningsformuläret...</p>
+            <Calendar
+              selectRange="true"
+              locale="sv"
+            />
           </div>
           </div>
         </div>

@@ -18,5 +18,3 @@ ReactDOM.render((
   </Provider>
 ), document.getElementById('root'));
 registerServiceWorker();
-
-//<IndexRoute component={Home} />

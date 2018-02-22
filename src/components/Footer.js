@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/logos/logo.jp2';
+import logo from '../img/logos/logo.jpg';
 import gk_officiell_partner from '../img/logos/gk_officiell_partner.jpg';
 import vastsverige_svensk from '../img/logos/vastsverige_svensk.jpg';
 

@@ -7,7 +7,8 @@ import Banner from './Banner';
 import PagePreviewComponent from '../PagePreview';
 
 const mapStateToProps = state => ({
-  appName: state.common.appName
+  appName: state.common.appName,
+  currentUser: state.common.currentUser
 });
 
 
@@ -32,13 +33,13 @@ class Home extends React.Component {
     return (
       <div >
         <MetaTags>
-          <title>Välkommen till Café Visthuset!</title>
+          <title>Café Visthuset!</title>
           <meta name="description" content="Törebodas mysigaste café och Göta kanals bästa kopp kaffe!"/>
           <meta name="keywords" content="café, kaffe, lunch, fika, Töreboda, Göta kanal, cykeluthyrning" />
         </MetaTags>
         <Banner
           appName={this.props.appName}/>
-
+          
         <div className="d-md-flex p-2 justify-content-around content">
           <PagePreviewComponent
             redirectURL="/menu"

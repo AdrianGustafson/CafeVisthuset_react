@@ -7,8 +7,9 @@ const InstagramWidgetComponent = () => {
         src="https://snapwidget.com/embed/415673"
         className="snapwidget-widget"
         allowtransparency="true"
-        frameborder="0"
-        scrolling="no">
+        frameBorder="0"
+        scrolling="no"
+        value="">
       </iframe>
     </div>
   );

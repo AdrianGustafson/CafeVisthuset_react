@@ -1,0 +1,11 @@
+.react-calendar__tile--active {
+  background: #77829A !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #993535 !important;
+}
+
+.react-calendar {
+  font-family: 'Playfair Display SC', sans-serif !important;
+}
