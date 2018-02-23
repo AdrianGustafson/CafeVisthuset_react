@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import agent from '../agent';
 
 // Styles
@@ -46,7 +46,8 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
-      this.context.router.replace(nextProps.redirectTo);
+      //this.context.router.replace(nextProps.redirectTo);
+      console.log(this.context);
       this.props.onRedirect();
     }
   }
@@ -59,10 +60,11 @@ class App extends Component {
             appName={this.props.appName} />
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path="/menu" component={Menu} />
+
             <Route path="/about" component={About}/>
             <Route path="/bikes" component={Bikes}/>
             <Route path="/login" component={Login}/>
+            <Route path="/menu" component={Menu} />
           </Switch>
           <Footer />
         </div>

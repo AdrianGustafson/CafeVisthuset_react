@@ -39,7 +39,6 @@ class Home extends React.Component {
         </MetaTags>
         <Banner
           appName={this.props.appName}/>
-          
         <div className="d-md-flex p-2 justify-content-around content">
           <PagePreviewComponent
             redirectURL="/menu"

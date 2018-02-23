@@ -1,8 +1,16 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 import agent from '../agent';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({ ...state.auth });
+import ListErrors from './ListErrors';
+
+const mapStateToProps = state => ({
+    email: state.auth.email,
+    password: state.auth.password,
+    currentUser: state.common.currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
@@ -10,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   onChangePassword: value =>
     dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
   onSubmit: (email, password) =>
-    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password)})
+    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) })
 });
 
 class Login extends React.Component {
@@ -22,10 +30,14 @@ class Login extends React.Component {
       event.preventDefault();
       this.props.onSubmit(email, password);
     };
+    localStorage.clear()
   }
-
   render() {
-    const { email, password } = this.props;
+    const { email, password, currentUser } = this.props;
+    if (currentUser) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="">
         <div className="container page">
@@ -33,6 +45,9 @@ class Login extends React.Component {
 
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Logga in</h1>
+
+              <ListErrors errors={this.props.errors} />
+
               <form onSubmit={this.submitForm(email, password)}>
                 <fieldset>
 
