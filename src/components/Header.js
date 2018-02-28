@@ -4,7 +4,7 @@ import React from 'react';
 class Header extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="header container">
         <nav className="navbar navbar-expand-lg navbar-light">
 
           <Link to="/" className="navbar-brand h1">

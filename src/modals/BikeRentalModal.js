@@ -2,7 +2,7 @@ import React from 'react';
 
 const BikeRentalModal = () => {
   return (
-    <div className="modal fade" id="bike-rental-terms" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="BikeRentalTerms">
+    <div className="modal fade" id="bike-rental-terms" tabIndex="-1" role="dialog" aria-hidden="true" aria-labelledby="BikeRentalTerms">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
