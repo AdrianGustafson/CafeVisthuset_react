@@ -2,7 +2,8 @@ import React from 'react';
 import MetaTags from 'react-meta-tags';
 import Calendar from 'react-calendar';
 
-//import RentalFormComponent from './RentalForm';
+import BikeContent from './BikeContent';
+import BikeRentalForm from './BikeRentalForm';
 
 class BikesComponent extends React.Component {
   render () {
@@ -17,15 +18,10 @@ class BikesComponent extends React.Component {
           <h1>Café Visthusets Cykeluthyrning</h1>
           <div className="row">
             <div className="col-xs-12 col-md-8">
-              <p>Här ska det komma texter...</p>
-
+            <BikeContent />
             </div>
-          <div className="col-xs-12 col-md-4">
-            <p>Här kommer bokningsformuläret...</p>
-            <Calendar
-              selectRange="true"
-              locale="sv"
-            />
+          <div className="col-xs-12 col-md-4 rental-form borded">
+            <BikeRentalForm />
           </div>
           </div>
         </div>

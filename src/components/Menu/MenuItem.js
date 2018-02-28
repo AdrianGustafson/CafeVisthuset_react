@@ -20,7 +20,7 @@ class MenuItemComponent extends React.Component {
     if (this.state.toggle){
       const markup = { __html: marked(this.props.text) };
       return (
-        <div className="menu-item-expanded col-md-12">
+        <div className="menu-item-expanded borded col-md-12">
           <div className="menu-image">
             <img src={this.props.image} alt=""/>
             <div className="image-content-expanded">
@@ -45,7 +45,7 @@ class MenuItemComponent extends React.Component {
     }
     else
       return (
-        <div className="menu-item col-md-5 col-s-12">
+        <div className="menu-item borded col-md-5 col-s-12">
           <div className="menu-image">
             <img src={this.props.image} alt=""/>
             <div className="image-content">

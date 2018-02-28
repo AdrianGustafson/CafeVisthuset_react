@@ -44,6 +44,15 @@ body {
   font-family: 'Arvo', serif;
 }
 
+.visthuset-primary {
+  background-color: #678A8A !important;
+  border: 1px solid #678A8A;
+}
+
+.visthuset-primary:hover {
+  border: 1px solid #FFFFFF;
+}
+
 h1 {
   font-family: 'Playfair Display SC', serif;
 }
@@ -75,36 +84,7 @@ img {
   width: 100%;
 }
 
-.jumbotron {
-  position: relative;
-  height: 750px;
-  background-image: url('../img/Visthuset-hover.jpg');
-  background-size: cover;
-  width: 100%;
-}
-
-footer {
-  background-color: #C2CCCC;
-}
-
-.logo {
-  width: 100%;
-  display: block;
-  margin: 5% 5%;
-}
-
-.gota-canal-logo {
-  background-image: url('../img/logos/gk_officiell_partner.jpg');
-  background-size: cover;
-  width: 30%;
-  display: inline;
-  border-radius: 3px;
-}
-
-.west-sweden-logo {
-  background-image: url('../img/logos/vastsverige_svensk.jpg');
-  background-size: cover;
-  width: 70%;
-  display: inline;
-  border-radius: 3px;
+.borded {
+  border: 2px solid black;
+  padding: 2%;
 }

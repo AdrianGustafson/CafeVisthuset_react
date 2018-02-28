@@ -6,6 +6,9 @@
   color: #993535 !important;
 }
 
+.react-calendar__tile--hasActive {
+  background-color: #E5D2AC !important;
+}
 .react-calendar {
   font-family: 'Playfair Display SC', sans-serif !important;
 }

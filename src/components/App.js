@@ -5,7 +5,9 @@ import agent from '../agent';
 
 // Styles
 import '../styles/App.css';
+import '../styles/Bikes.css';
 import '../styles/index.css';
+import '../styles/Footer.css';
 import '../styles/Home.css';
 import '../styles/Menu.css';
 import '../styles/Calendar.css';
@@ -18,6 +20,7 @@ import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Menu from './Menu';
+import Register from './Register';
 
 
 const mapStateToProps = state => ({
@@ -44,14 +47,6 @@ class App extends Component {
     this.props.onLoad(token ? agent.Auth.current() : null, token);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.redirectTo) {
-      //this.context.router.replace(nextProps.redirectTo);
-      console.log(this.context);
-      this.props.onRedirect();
-    }
-  }
-
   render() {
     if (this.props.appLoaded) {
       return (
@@ -65,6 +60,7 @@ class App extends Component {
             <Route path="/bikes" component={Bikes}/>
             <Route path="/login" component={Login}/>
             <Route path="/menu" component={Menu} />
+            <Route path="/register" component={Register} />
           </Switch>
           <Footer />
         </div>

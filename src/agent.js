@@ -6,7 +6,6 @@ import _superagent from 'superagent';
 const superagent = superagentPromise(_superagent, global.Promise);
 
 const API_ROOT = 'http://127.0.0.1:8000/api';
-//const API_ROOT = 'https://conduit.productionready.io/api';
 
 const responseBody = res => res.body;
 
@@ -26,9 +25,11 @@ const requests = {
 
 const Auth = {
   current: () =>
-    requests.get('/guest'),
+    requests.get('/user'),
   login: (email, password) =>
-    requests.post('/users/login', {'user': { email, password }})
+    requests.post('/users/login', {'user': { email, password }}),
+  register: (email, password) =>
+    requests.post('/users/guest', {'user': { email, password }})
 }
 
 export default {

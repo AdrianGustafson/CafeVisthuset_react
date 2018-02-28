@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import agent from '../agent';
 import { connect } from 'react-redux';
@@ -7,23 +7,27 @@ import { connect } from 'react-redux';
 import ListErrors from './ListErrors';
 
 const mapStateToProps = state => ({
-    email: state.auth.email,
-    password: state.auth.password,
-    currentUser: state.common.currentUser
-});
+  email: state.auth.email,
+  password: state.auth.password,
+  currentUser: state.common.currentUser
+})
 
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
-    dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'email', value }),
-  onChangePassword: value =>
-    dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
-  onSubmit: (email, password) =>
-    dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) }),
+    dispatch({ 'type': 'UPDATE_FIELD_AUTH', key: 'email', value}),
+  onChangePassword: value => {
+    console.log(value);
+    dispatch({ 'type': 'UPDATE_FIELD_AUTH', key: 'password', value})
+  },
+  onSubmit: (email, password) => {
+    const payload = agent.Auth.register(email, password);
+    dispatch({ 'type': 'REGISTER', payload })
+  },
   onUnLoad: () =>
-    dispatch({ type: 'LOGIN_PAGE_UNLOADED' })
-});
+    dispatch({ 'type': 'REGISTER_PAGE_UNLOADED' })
+})
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
     this.onChangeEmail = event => this.props.onChangeEmail(event.target.value);
@@ -32,30 +36,24 @@ class Login extends React.Component {
       event.preventDefault();
       this.props.onSubmit(email, password);
     };
-
   }
 
   componentWillUnMount() {
     this.props.onUnLoad();
   }
-
   render() {
-    const { email, password, currentUser } = this.props;
-    //localStorage.clear();
-    if (currentUser) {
-      return <Redirect to="/" />;
-    }
+    const { email, password } = this.props;
 
     return (
       <div className="">
         <div className="container page">
           <div className="row">
 
-            <div className="col-md-6 offset-md-3 col-xs-12">
-              <h1 className="text-xs-center">Logga in</h1>
+            <div className="col-md-6 offset-md-3, col-xs-12">
+              <h1 className="text-xs-center">Skapa konto</h1>
               <p className="text-xs-center">
-                <Link to="register">
-                  Behöver du ett konto?
+                <Link to="login">
+                  Har du redan ett konto?
                 </Link>
               </p>
 
@@ -67,7 +65,7 @@ class Login extends React.Component {
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
-                      type="email"
+                      email="email"
                       placeholder="Epost"
                       value={email}
                       onChange={this.onChangeEmail} />
@@ -83,10 +81,10 @@ class Login extends React.Component {
                   </fieldset>
 
                   <button
-                    className="btn btn-lg btn-primary pull-xs-right"
+                    className="btn btn-lg btn-primary"
                     type="submit"
                     disabled={this.props.inProgress}>
-                    Logga in
+                    Skapa konto
                   </button>
 
                 </fieldset>
@@ -100,4 +98,4 @@ class Login extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

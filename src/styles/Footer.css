@@ -1,0 +1,40 @@
+footer {
+  background-color: #C2CCCC;
+}
+footer .row {
+  bottom: 25px;
+  padding:3%;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.logo {
+  width: 100%;
+  display: block;
+  padding: 5% 5%;
+}
+
+.gota-canal-logo {
+  width: 70px;
+  height: 80px;
+  display: inline;
+  border-radius: 3px;
+}
+
+.west-sweden-logo {
+  margin: 0% 3%;
+  width: 145px;
+  height: 75px;
+  display: inline;
+  border-radius: 3px;
+  border: 5px solid #FFFFFF;
+}
+
+.adress-component {
+  border-left: 1px solid #FFFFFF;
+  padding: 3%;
+}
+
+.logo-component {
+  border-right: 1px solid #FFFFFF;
+  padding: 3%;
+}

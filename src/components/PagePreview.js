@@ -4,7 +4,7 @@ import marked from 'marked';
 
 const PagePreviewComponent = ({ redirectURL, image, title, text }) => {
   return (
-    <div className="page-preview">
+    <div className="page-preview borded">
       <Link className="preview-link" to={redirectURL}>
         <div className="container">
           <div className="page-preview-img">
