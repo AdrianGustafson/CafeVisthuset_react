@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'react-router-dom';
+
 import logo from '../img/logos/logo.jpg';
 import gk_officiell_partner from '../img/logos/gk_officiell_partner.png';
 import vastsverige_svensk from '../img/logos/vastsverige_svensk.jpg';
@@ -29,8 +31,8 @@ const LogoComponent = () => {
     <div className="col-xs-12 col-md-4 logo-component">
       <img src={logo} className="logo"/>
       <div>
-        <img src={vastsverige_svensk} className="west-sweden-logo" />
-        <img src={gk_officiell_partner} className="gota-canal-logo" />
+        <a href="http://www.vastsverige.com" ><img src={vastsverige_svensk} className="west-sweden-logo" /></a>
+        <a href="http://www.gotakanal.se" ><img src={gk_officiell_partner} className="gota-canal-logo" /></a>
       </div>
     </div>
   );
