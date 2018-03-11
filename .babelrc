@@ -4,6 +4,12 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    [
+      "react-intl", {
+        "messagesDir": "./public/assets/messages",
+        "enforceDescriptions": false
+      }
+    ]
   ]
 }
