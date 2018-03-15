@@ -1,0 +1,135 @@
+import React from 'react';
+import { defineMessages } from 'react-intl';
+
+const messages = defineMessages({
+  // CTAs
+  read_more: {
+    id: 'app.cta.read_more',
+    defaultMessage: 'Läs mer!'
+  },
+  close: {
+    id: 'app.cta.close',
+    defaultMessage: 'Stäng'
+  },
+  book: {
+    id: 'app.cta.book',
+    defaultMessage: 'boka!'
+  },
+  // Form messages
+  newsletter: {
+    id: 'app.form.newsletter',
+    defaultMessage: 'Vill du ha nyheter och erbjudanden'
+  },
+  privacy: {
+    id: 'app.form.privacy',
+    defaultMessage: 'Läs om hur vi hanterar dina personuppgifter'
+  },
+  first_name: {
+    id: 'app.form.first_name',
+    defaultMessage: 'Förnamn'
+  },
+  last_name: {
+    id: 'app.form.last_name',
+    defaultMessage: 'Efternamn'
+  },
+  phone_number: {
+    id: 'app.form.phone_number',
+    defaultMessage: 'Telefonnummer'
+  },
+  email: {
+    id: 'app.form.email',
+    defaultMessage: 'Epost'
+  },
+  message: {
+    id: 'app.form.message',
+    defaultMessage: 'Meddelande till oss...'
+  }
+});
+
+// Pages
+const pages = {
+    packages: defineMessages({
+      supertitle: {
+        id: "booking.packages.supertitle",
+        defaultMessage: "Paketupplevelser | Café Visthuset"
+      },
+      title: {
+        id: "booking.packages.title",
+        defaultMessage:"Paketupplevelser hos Café Visthuset"
+      }
+    }),
+    menu: defineMessages({
+      supertitle: {
+        id: "menu.supertitle",
+        defaultMessage: "Café Visthuset | Meny"
+      },
+      title: {
+        id: "menu.title",
+        defaultMessage: "Meny"
+      }
+    }),
+    home: defineMessages({
+      menuTitle: {
+        id: "Home.preview.menu.title",
+        defaultMessage: "Vår meny"
+      },
+      menuText: {
+        id: "Home.preview.menu",
+        defaultMessage: "Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle."
+      },
+      bikesTitle: {
+        id: "Home.preview.bikes.title",
+        defaultMessage: "Cykeluthyrning"
+      },
+      bikesText: {
+        id: "Home.preview.bikes",
+        defaultMessage: "Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle."
+      },
+      packagesTitle: {
+        id: "Home.preview.package.title",
+        defaultMessage: "Cykelpaket"
+      },
+      packagesText: {
+        id: "Home.preview.package",
+        defaultMessage: "Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle."
+      }
+    }),
+    bikes: defineMessages({
+      supertitle: {
+        id: "booking.bikes.supertitle",
+        defaultMessage: "Cykeluthyrning | Café Visthuset"
+      },
+      title: {
+        id: "booking.bikes.title",
+        defaultMessage: "Café Visthusets Cykeluthyrning"
+      },
+      // Bike info
+      bikeInfoTitle: {
+        id: 'booking.bikes.bikeinfo.title',
+        defaultMessage: "Våra cyklar"
+      },
+      bikeInfoBody: {
+        id: 'booking.bikes.bikeinfo.body',
+        defaultMessage: "Våra cyklar är 3-växlade damcyklar från Skeppshult, utrustade med cykelkorg och pakethållare. I priset ingår även cykelhjälm och service utifall att olyckan skulle vara framme."
+      },
+      bikeInfoAlt: {
+        id: 'booking.bikes.bikeinfo.alt',
+        defaultMessage: "Röd Skeppshultcykel från Cafe Visthuset"
+      },
+      // Lunch info
+      lunchInfoTitle: {
+        id: 'booking.bikes.lunchinfo.title',
+        defaultMessage: "Lunchpaket från Café Visthuset"
+      },
+      lunchInfoBody: {
+        id: 'booking.bikes.lunchinfo.body',
+        defaultMessage: "Vi erbjuder goda lunchpaket att ta med sig på cykelturen. Välj mellan vegetariskt, fisk eller kallskuret. Till något av alternativen får du även en fransk potatissallad och en grönsallad med dressing. I paketet ingår även kaffe och en dryck."
+      },
+      lunchInfoAlt: {
+        id: 'booking.bikes.lunchinfo.alt',
+        defaultMessage: "Lunchpaket från Cafe Visthuset"
+      }
+    })
+  };
+
+export { messages, pages };

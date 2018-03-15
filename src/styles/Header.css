@@ -1,15 +1,8 @@
-.header {
-  background-color: #C2CCCC;
-}
-
 .navbar-brand {
  font-family: 'Playfair Display SC', serif;
  font-size: 2em;
  font-variant: small-caps;
  display: inline-block;
- padding-top: $navbar-brand-padding-y;
- padding-bottom: $navbar-brand-padding-y;
- margin-right: $navbar-padding-x;
  line-height: inherit;
  white-space: nowrap;
 

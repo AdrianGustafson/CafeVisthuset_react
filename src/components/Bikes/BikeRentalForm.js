@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 
 import Calendar from 'react-calendar';
 
@@ -8,8 +9,11 @@ import agent from '../../agent';
 import ListErrors from '../ListErrors';
 import ModalWrapper from '../ModalWrapper';
 
+import { messages } from '../../messages';
+
 const mapStateToProps = state => ({
-  ...state.booking
+  ...state.booking,
+  currentLocale: state.intl.locale
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -99,10 +103,47 @@ class BikeRentalForm extends React.Component {
 
   render() {
     const dates = [this.state.start_date, this.state.end_date];
+    const { currentLocale } = this.props;
+    const { formatMessage, formatHTMLMessage } = this.props.intl;
+
+    const formMessages = defineMessages({
+      title: {
+        id:'bikes.booking.form.title',
+        defaultMessage: 'Boka här!'
+      },
+      bikeTitle: {
+        id: 'bikes.booking.form.bikeTitle',
+        defaultMessage: 'Cyklar'
+      },
+      extraTitle: {
+        id: 'bikes.booking.form.extraTitle',
+        defaultMessage: 'Tillval'
+      },
+      personalTitle: {
+        id: 'bikes.booking.form.personalTitle',
+        defaultMessage: 'Personuppgifter'
+      },
+      adults: {
+        id: 'bikes.booking.form.adults',
+        defaultMessage: 'Antal vuxencyklar'
+      },
+      youths: {
+        id: 'bikes.booking.form.youths',
+        defaultMessage: 'Antal ungdomscyklar (12 - 15 år)'
+      },
+      child: {
+        id: 'bikes.booking.form.child',
+        defaultMessage: 'Antal barncyklar (8 - 12 år)'
+      },
+      small_child: {
+        id: 'bikes.booking.form.small_child',
+        defaultMessage: 'Antal barncyklar (6 - 8 år)'
+      },
+    });
 
     return (
       <div className="bike-form">
-        <h1>Boka här!</h1>
+        <h1>{formatMessage(formMessages.title)}</h1>
         <ListErrors errors={this.props.errors}/>
 
         <form onSubmit={this.submitForm}>
@@ -111,6 +152,7 @@ class BikeRentalForm extends React.Component {
             <fieldset className="form-group">
               <Calendar
                 onChange={this.onChangeDate}
+                locale={currentLocale}
                 value={dates}
                 showNavigation={true}
                 selectRange={true}
@@ -118,46 +160,43 @@ class BikeRentalForm extends React.Component {
             </fieldset>
 
             <fieldset className="form-group" name="cyklar">
-              <legend className="rental-form__legend">Cyklar:</legend>
+              <legend className="rental-form__legend">{formatMessage(formMessages.bikeTitle)}:</legend>
               <input
                 className="form-control"
                 type="number"
-                placeholder="Antal vuxencyklar"
+                placeholder={formatMessage(formMessages.adults)}
                 onChange={this.updateSubState('bikes', 'adult')}/>
 
               <input
                 className="form-control"
                 type="number"
-                placeholder="Antal ungdomscyklar (12 - 15 år)"
-                //value={this.state.young_bikes}
+                placeholder={formatMessage(formMessages.youths)}
                 onChange={this.updateSubState('bikes', 'young')}/>
 
               <input
                 className="form-control"
                 type="number"
-                placeholder="Antal barncyklar (8-12 år)"
-                //value={this.state.child_bikes}
+                placeholder={formatMessage(formMessages.child)}
                 onChange={this.updateSubState('bikes', 'child')}/>
 
               <input
                 className="form-control"
                 type="number"
-                placeholder="Antal barncyklar (6-8 år)"
-                //value={this.state.small_child_bikes}
+                placeholder={formatMessage(formMessages.small_child)}
                 onChange={this.updateSubState('bikes', 'small_child')}/>
             </fieldset>
 
             <fieldset className="form-group">
-              <legend className="rental-form__legend">Tillval:</legend>
+              <legend className="rental-form__legend">{formatMessage(formMessages.extraTitle)}:</legend>
             </fieldset>
 
             <fieldset>
-                <legend className="rental-form__legend">Personuppgifter:</legend>
+                <legend className="rental-form__legend">{formatMessage(formMessages.personalTitle)}:</legend>
               <fieldset className="form-group">
                 <input
                   className="form-control"
                   type="text"
-                  placeholder="Förnamn"
+                  placeholder={formatMessage(messages.first_name)}
                   value={this.state.first_name}
                   onChange={this.updateState('first_name')} />
               </fieldset>
@@ -166,7 +205,7 @@ class BikeRentalForm extends React.Component {
                 <input
                   className="form-control"
                   type="text"
-                  placeholder="Efternamn"
+                  placeholder={formatMessage(messages.last_name)}
                   value={this.state.last_name}
                   onChange={this.updateState('last_name')} />
               </fieldset>
@@ -175,7 +214,7 @@ class BikeRentalForm extends React.Component {
                 <input
                   className="form-control"
                   type="tel"
-                  placeholder="Telefonnummer"
+                  placeholder={formatMessage(messages.phone_number)}
                   value={this.state.phone_number}
                   onChange={this.updateState('phone_number')} />
               </fieldset>
@@ -184,7 +223,7 @@ class BikeRentalForm extends React.Component {
                 <input
                   className="form-control"
                   type="email"
-                  placeholder="Epost"
+                  placeholder={formatMessage(messages.email)}
                   value={this.state.email}
                   onChange={this.updateState('email')} />
               </fieldset>
@@ -193,7 +232,7 @@ class BikeRentalForm extends React.Component {
                 <textarea
                   className="form-control"
                   rows="6"
-                  placeholder="Meddelande till oss..."
+                  placeholder={formatMessage(messages.message)}
                   value={this.state.message}
                   onChange={this.updateState('message')}>
                 </textarea>
@@ -208,7 +247,7 @@ class BikeRentalForm extends React.Component {
                       checked={this.state.newsletter}
                       value={this.state.newsletter}
                       onChange={this.onToggleCheckbox('newsletter')} />
-                    Vill du ha nyheter och erbjudanden?
+                    {formatMessage(messages.newsletter)}?
                   </label>
 
                   <label>
@@ -216,14 +255,19 @@ class BikeRentalForm extends React.Component {
                       type="checkbox"
                       name="terms"
                       required />
-                    <span>Jag har läst och accepterar
-                    <button
-                      className="btn btn-link modal-button-link"
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#bike-rental-terms">
-                       bokningsvillkoren
-                    </button></span>
+                    <FormattedMessage
+                      id={'bikes.booking.form.terms'}
+                      defaultMessage={'Jag har läst och accepterar {button}'}
+                      values={{button: <button
+                        className="btn btn-link modal-button-link"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#bike-rental-terms">
+                        <FormattedMessage
+                          id="bikes.booking.forms.terms.terms"
+                          defaultMessage="bokningsvillkoren" />
+                        </button>}}
+                     />
                     <ModalWrapper id="BIKE_RENTAL_TERMS" />
                   </label>
                 </div>
@@ -232,7 +276,7 @@ class BikeRentalForm extends React.Component {
                   type="button"
                   data-toggle="modal"
                   data-target="#privacy-policy">
-                  Läs om hur vi hanterar dina personuppgifter
+                  {formatMessage(messages.privacy)}
                 </button></span>
                 <ModalWrapper id="PRIVACY_POLICY" />
               </fieldset>
@@ -243,7 +287,7 @@ class BikeRentalForm extends React.Component {
                 className="visthuset-primary btn btn-lg btn-primary pull-xs-right"
                 type="submit"
                 onClick={this.onSubmit}>
-                Boka!
+                {formatMessage(messages.book)}
               </button>
             </fieldset>
           </fieldset>
@@ -253,4 +297,4 @@ class BikeRentalForm extends React.Component {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BikeRentalForm);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(BikeRentalForm));

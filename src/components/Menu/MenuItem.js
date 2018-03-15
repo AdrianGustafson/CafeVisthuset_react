@@ -1,5 +1,8 @@
 import React from 'react';
 import marked from 'marked';
+import { injectIntl } from 'react-intl';
+
+import {messages} from '../../messages';
 
 class MenuItemComponent extends React.Component {
   constructor(props) {
@@ -17,6 +20,7 @@ class MenuItemComponent extends React.Component {
   }
 
   render() {
+    const { formatMessage } = this.props.intl;
     if (this.state.toggle){
       const markup = { __html: marked(this.props.text) };
       return (
@@ -34,7 +38,7 @@ class MenuItemComponent extends React.Component {
                     <p>Placeholder...</p>
                   </div>
 
-                  <button className="menu-item__button menu-item--expanded" onClick={this.expand}>stäng</button>
+                  <button className="menu-item__button menu-item--expanded" onClick={this.expand}>{formatMessage(messages.close)}</button>
 
                 </div>
               </div>
@@ -51,11 +55,11 @@ class MenuItemComponent extends React.Component {
             <div className="image-content">
               <h2><span>{this.props.title}</span></h2>
               <p><span>{this.props.shorttext}</span></p>
-              <button className="menu-item__button" onClick={this.expand}>Läs mer!</button>
+              <button className="menu-item__button" onClick={this.expand}>{formatMessage(messages.read_more)}</button>
             </div>
           </div>
         </div>
       );
     }
 }
-export default MenuItemComponent;
+export default injectIntl(MenuItemComponent);

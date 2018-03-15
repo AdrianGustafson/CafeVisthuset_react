@@ -1,13 +1,90 @@
-import { NavLink, Link } from 'react-router-dom';
 import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateIntl } from 'react-intl-redux';
+import { defineMessages, injectIntl } from 'react-intl';
+
+import store from '../store';
+
+const langs = {
+  'sv': 'Svenska',
+  'en': 'English',
+  'de': 'Deutsch',
+  'no': 'Norsk'
+}
+
+const SwitchLocale = connect(state => ({
+  currentLocale: state.intl.locale,
+  locales: state.locales,
+}))(({ currentLocale, locales }) => (
+  <div className="btn-group" role="group">
+    <button
+      className="btn"
+      type="button"
+      onClick={e =>
+        store.dispatch(
+          updateIntl({
+            locale: 'sv',
+            messages: locales['sv'],
+          })
+        )}>
+      <span className="flag-icon flag-icon-sv"></span>
+    </button>
+    <button
+          className="btn"
+          type="button"
+          onClick={e =>
+            store.dispatch(
+              updateIntl({
+                locale: 'en',
+                messages: locales['en'],
+              })
+            )}>
+      <span className="flag-icon flag-icon-en"></span>
+    </button>
+  </div>
+))
 
 class Header extends React.Component {
-  render() {
-    return (
-      <div className="header container">
-        <nav className="navbar navbar-expand-lg navbar-light">
 
-          <Link to="/" className="navbar-brand h1">
+  render() {
+    const { formatMessage } = this.props.intl;
+
+    const messages = defineMessages({
+      menu: {
+        id: "nav.menu",
+        defaultMessage: 'Meny'
+      },
+      home: {
+        id: "nav.home",
+        defaultMessage: 'Hem'
+      },
+      bikes: {
+        id: 'nav.bikes',
+        defaultMessage: 'Cykeluthyrning'
+      },
+      'packages': {
+        id: 'nav.packages',
+        defaultMessage: 'Paketupplevelser'
+      },
+      'events': {
+        id: 'nav.events',
+        defaultMessage: 'Evenemang'
+      },
+      about: {
+        id: 'nav.about',
+        defaultMessage: 'Om oss'
+      },
+      contact: {
+        id: 'nav.contact',
+        defaultMessage: 'Kontakt'
+      }
+    });
+
+    return (
+      <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <Link to="/" className="navbar-brand">
             {this.props.appName.toLowerCase()}
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +99,7 @@ class Header extends React.Component {
                   to="/"
                   className="nav-link"
                   activeClassName='active'>
-                  Hem
+                  {formatMessage(messages.home)}
                 </NavLink>
               </li>
 
@@ -31,7 +108,7 @@ class Header extends React.Component {
                   to="/menu"
                   className="nav-link"
                   activeClassName='active'>
-                  Meny
+                  {formatMessage(messages.menu)}
                 </NavLink>
               </li>
 
@@ -40,7 +117,7 @@ class Header extends React.Component {
                   to="/bikes"
                   className="nav-link"
                   activeClassName="active">
-                  Cykeluthyrning
+                  {formatMessage(messages.bikes)}
                 </NavLink>
               </li>
 
@@ -49,7 +126,7 @@ class Header extends React.Component {
                   to="/packages"
                   className="nav-link"
                   activeClassName="active">
-                  Paketupplevelser
+                  {formatMessage(messages.packages)}
                 </NavLink>
               </li>
 
@@ -58,7 +135,7 @@ class Header extends React.Component {
                   to="/"
                   className="nav-link"
                   activeClassName="active">
-                  Evenemang
+                  {formatMessage(messages.events)}
                 </NavLink>
               </li>
 
@@ -67,7 +144,7 @@ class Header extends React.Component {
                   to="/about"
                   className="nav-link"
                   activeClassName="active">
-                  Om oss
+                  {formatMessage(messages.about)}
                 </NavLink>
               </li>
 
@@ -76,16 +153,17 @@ class Header extends React.Component {
                   to="/"
                   className="nav-link"
                   activeClassName="active">
-                  Kontakt
+                  {formatMessage(messages.contact)}
                 </NavLink>
               </li>
             </ul>
           </div>
-
+          <SwitchLocale
+            className="push-md-right"/>
         </nav>
       </div>
     );
   }
 }
 
-export default Header;
+export default injectIntl(Header);

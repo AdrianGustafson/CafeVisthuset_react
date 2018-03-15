@@ -1,48 +1,96 @@
 import React from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
+
 import MenuItemComponent from './MenuItem';
 
-
-const MenuItemList = props => {
+class MenuItemList extends React.Component {
+  render() {
   const itemList = [
     {
-      'id': 0,
-      'title': "Riktigt gott kaffe!",
-      'shorttext': "Hos oss hittar du riktigt gott kaffe, varsamt rostat för att få fram den söta smaken",
-      'text': "This is a Placeholder with **markdown**!",
+      id: 0,
+      messages: defineMessages({
+        title: {
+          id:'menu.item.coffe.title',
+          defaultMessage: "Riktigt gott kaffe!"
+        },
+        shorttext: {
+          id: "menu.item.coffee.shorttext",
+          defaultMessage: "Hos oss hittar du riktigt gott kaffe, varsamt rostat för att få fram den söta smaken",
+        },
+        text: {
+          id: "menu.item.coffee.text",
+          defaultMessage: "This is a Placeholder with **markdown**!"
+        }
+      }),
       'image': "./img/menu/coffee.jpg"
   },
     {
-      'id': 1,
-      'title': "Söndagsbrunch",
-      'shorttext': "Varje söndag servererar vi vår populära brunch",
-      'text': "This is a Placeholder!",
-      'image': "./img/menu/brunchpizza.jpg"
+      id: 1,
+      messages: defineMessages({
+        title: {
+          id: 'menu.item.brunch.title',
+          defaultMessage: "Söndagsbrunch"
+        },
+        shorttext: {
+          id: 'menu.item.brunch.shorttext',
+          defaultMessage: "Varje söndag servererar vi vår populära brunch"
+        },
+        text: {
+          id: 'menu.item.brunch.text',
+          defaultMessage: "This is a Placeholder!"
+        }
+      }),
+      image: "./img/menu/brunchpizza.jpg"
   },
     {
-      'id': 2,
-      'title': "Klings glass",
-      'shorttext': "Vi serverar Klings goda glass från Mariestad",
-      'text': "This is a Placeholder!",
-      'image': "./img/menu/solglass.jpg"
+      id: 2,
+      messages: defineMessages({
+        title: {
+          id: 'menu.item.icecream.title',
+          defaultMessage: "Klings glass"
+        },
+        shorttext:{
+          id: 'menu.item.icecream.shorttext',
+          defaultMessage: "Vi serverar Klings goda glass från Mariestad"
+        },
+        text: {
+          id: 'menu.item.icecream.text',
+          defaultMessage: "This is a Placeholder!"
+        }
+      }),
+      image: "./img/menu/solglass.jpg"
   },
     {
-      'id': 3,
-      'title': "Egenbakat bröd",
-      'shorttext': "Vi bakar allt vårt bröd själva på gammaldags mjölsorter från lokala kvarnar",
-      'text': "This is a Placeholder!",
-      'image': "./img/menu/bread.jpg"
+      id: 3,
+      messages: defineMessages({
+      title: {
+        id: 'menu.item.bread.title',
+        defaultMessage:"Egenbakat bröd"
+      },
+      shorttext: {
+        id: 'menu.item.bread.shorttext',
+        defaultMessage: "Vi bakar allt vårt bröd själva på gammaldags mjölsorter från lokala kvarnar"
+      },
+      text: {
+        id: 'menu.item.bread.text',
+        defaultMessage: "This is a Placeholder!"
+      }
+    }),
+      image: "./img/menu/bread.jpg"
     }
   ]
 
+  const { formatMessage } = this.props.intl;
   return (
     <div>
       {
         itemList.map( item => {
+          console.log(item);
           return (
             <MenuItemComponent
-              title={item.title}
-              shorttext={item.shorttext}
-              text={item.text}
+              title={formatMessage(item.messages.title)}
+              shorttext={formatMessage(item.messages.shorttext)}
+              text={formatMessage(item.messages.text)}
               image={item.image}
               key ={item.id}
             />)
@@ -51,6 +99,6 @@ const MenuItemList = props => {
     }
   </div>
   );
-};
+}};
 
-export default MenuItemList;
+export default injectIntl(MenuItemList);

@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import agent from '../agent';
 
 // Styles
 import '../styles/App.css';
 import '../styles/Bikes.css';
 import '../styles/index.css';
+import '../styles/Flags.css';
 import '../styles/Footer.css';
 import '../styles/Home.css';
+import '../styles/Header.css';
 import '../styles/Menu.css';
 import '../styles/Calendar.css';
 
@@ -20,8 +23,8 @@ import Header from './Header';
 import Home from './Home';
 import Login from './Login';
 import Menu from './Menu';
+import Packages from './Packages';
 import Register from './Register';
-
 
 const mapStateToProps = state => ({
     appLoaded: state.common.appLoaded,
@@ -60,6 +63,7 @@ class App extends Component {
             <Route path="/bikes" component={Bikes}/>
             <Route path="/login" component={Login}/>
             <Route path="/menu" component={Menu} />
+            <Route path="/packages" component={Packages} />
             <Route path="/register" component={Register} />
           </Switch>
           <Footer />
@@ -68,7 +72,9 @@ class App extends Component {
     } else {
       return (
         <div>
-          Page could not be loaded...
+          <FormattedMessage
+            id='app.loading'
+            defaultMessage='Loading app...' />
         </div>
       );
     }

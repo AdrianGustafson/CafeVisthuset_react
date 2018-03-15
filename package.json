@@ -6,11 +6,20 @@
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "build:dev": "webpack --env=dev --progress --profile --colors",
-    "build:dist": "webpack --env=prod --progress --profile --colors"
+    "build:dist": "webpack --env=prod --progress --profile --colors",
+    "build:langs": "better-npm-run geni18n"
+  },
+  "betterScripts": {
+    "geni18n": {
+      "command": "node scripts/ExtractMessages.js"
+    }
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-react-intl": "^2.4.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
@@ -22,6 +31,7 @@
     "webpack": "^3.11.0"
   },
   "dependencies": {
+    "accept-language": "^3.0.18",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "history": "^4.7.2",
     "intl": "^1.2.5",
@@ -32,6 +42,7 @@
     "react-flexbox-grid": "^2.0.0",
     "react-hot-loader": "^4.0.0-rc.0",
     "react-intl": "^2.4.0",
+    "react-intl-redux": "^0.7.0",
     "react-meta-tags": "^0.3.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
