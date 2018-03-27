@@ -1,34 +1,40 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { pages } from '../../messages';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { messages } from '../../messages';
+import { Link } from 'react-router-dom';
 
-const Banner = ({ props, appName }) => {
-  return (
-      <div className="banner col-xs-12">
+class Banner extends React.Component {
+  render() {
+    const { formatMessage } = this.props.intl;
+
+    return (
+      <div className="banner">
         <div className="banner-image">
           <img src='./img/home/Visthuset-hover.jpg' alt=""/>
-          <div className="container banner-content">
-            <div className="banner-box ">
+          <div className="banner-content">
             <h1 id="banner-heading">
               <FormattedMessage
                 id="home.banner.greeting"
-                defaultMessage= {`Välkommen till {appName}`}
-                values={{appName}}
+                defaultMessage= {`Välkommen till Café Visthuset!`}
               />
             </h1>
-              <div className="row">
-                <div className="d-none d-md-block">
-                  <div className="col-xs-12 col-md-5 banner-sub-content">
-                    <h2>Subheading</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p id="banner-text">
+              <FormattedMessage
+                id="home.banner.text"
+                defaultMessage="Ett visthus var en plats på gården där mat förvarades, ett slags skafferi."
+              />
+            </p>
+            <Link
+              className="visthuset-primary btn btn-primary"
+              to='/about'>
+              {formatMessage(messages.read_more)}
+            </Link>
           </div>
 
         </div>
       </div>
-  );
+    )
+  };
 }
 
-export default Banner;
+export default injectIntl(Banner);

@@ -9,7 +9,7 @@ import MenuItemList from './MenuItemList';
 import { pages } from '../../messages';
 
 const Menu = (props) => {
-  const {formatMessage } = props.intl;
+  const { formatMessage } = props.intl;
   const supertitle = formatMessage(pages.bikes.supertitle);
   return (
     <div className="page">

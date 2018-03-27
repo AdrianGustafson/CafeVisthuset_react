@@ -1,27 +1,12 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { promiseMiddleware, localStorageMiddleware } from './middleware';
-import { intlReducer } from 'react-intl-redux';
-import auth from './reducers/auth';
-import common from './reducers/common';
-import home from './reducers/home';
-import locales from './reducers/locales';
+import { routerMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
-const reducer = combineReducers({
-  auth,
-  common,
-  home,
-  intl: intlReducer,
-  locales
-});
+import reducers from './reducers';
 
-const initialState = {
-  intl: {
-    defaultLocale: 'sv',
-    locale: 'sv'
-  }
-}
-const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware);
+const history = createBrowserHistory();
+const middleware = applyMiddleware(routerMiddleware(history), promiseMiddleware, localStorageMiddleware);
 
-const store = createStore(reducer, initialState, middleware);
-
+const store = createStore(reducers, middleware);
 export default store;

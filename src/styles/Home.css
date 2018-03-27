@@ -18,10 +18,11 @@
 
 .banner-content {
   position: absolute;
-  top: 2%;
+  top: 20%;
   width: 100%;
-  height: 100%;
-  padding: 5% 5%;
+  padding: 2%;
+  background: rgb(255,255,255);
+  background-color: rgba(255,255,255,.6);
 }
 
 .banner-box {
@@ -29,14 +30,12 @@
   background: rgb(255,255,255);
   background-color: rgba(255,255,255,.6);
 }
-
-.banner-sub-content {
-  padding: 5%;
-}
 #banner-heading {
   top: 2%;
   bottom: 3%;
-  position: relative;
   width: 100%;
+}
 
+#banner-text {
+  padding:0% 25%;
 }

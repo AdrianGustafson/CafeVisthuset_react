@@ -5,7 +5,7 @@ import MetaTags from 'react-meta-tags';
 import { injectIntl } from 'react-intl';
 
 import Banner from './Banner';
-import PagePreviewComponent from '../PagePreview';
+import PagePreviewComponent from './PagePreview';
 
 import { pages } from '../../messages';
 

@@ -5,7 +5,14 @@
 // Translated strings
 import localeData from '../../public/locales/data.json'
 
-export default (state = {}, action) => {
+const initialState = {
+  intl: {
+    defaultLocale: 'sv',
+    locale: 'sv'
+  }
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'APP_LOAD':
       return {

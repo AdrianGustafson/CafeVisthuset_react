@@ -1,22 +1,76 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 import{ messages } from '../../messages';
 
-const PackagePreviewComponent = (props) => {
-  const { formatMessage } = props.intl;
+const PackageRightComponent = ({name, url, image, description, short_description, price, cta}) => {
   return (
-    <div className="row package-preview borded">
-      <div className="package-image col-xs-12 col-md-8">
-        <img src={this.props.image} alt=""/>
-      </div>
-      <div className="package-content col-xs-12 col-md-4">
-        <h2><span>{this.props.title}</span></h2>
-        <p><span>{this.props.shorttext}</span></p>
-        <button className="menu-item__button" onClick={this.expand}>{formatMessage(messages.read_more)}</button>
+    <div className="package-preview clearfix borded">
+      <img
+        className="package-preview__image col-xs-12 col-md-8"
+        src={image}
+        alt=""/>
+      <div className="d-flex-column align-self-end package-preview-content col-xs-12 col-md-4">
+        <h2>{name}</h2>
+        <p>{short_description}</p>
+        <p>{description}</p>
+        <p className="package-preview__price">{price} SEK</p>
+        <Link to={url}
+          className="visthuset-primary btn col align-self-end">
+          {cta}
+        </Link>
       </div>
     </div>
   );
+}
+
+const PackageLeftComponent = (props) => {
+  return (
+    <div className="package-preview clearfix borded">
+      <div className="package-preview-content col-xs-12 col-md-4">
+        <h2>{props.name}</h2>
+        <p>{props.short_description}</p>
+        <p>{props.description}</p>
+        <p className="package-preview__price">{props.price} SEK</p>
+        <Link to={props.url}
+          className="visthuset-primary btn">
+          {props.cta}
+        </Link>
+      </div>
+      <img
+        className="package-preview__image col-xs-12 col-sm-8"
+        src={props.image}
+        alt=""/>
+    </div>
+  );
+}
+const PackagePreviewComponent = (props) => {
+  const url = `/packages/${props.slug}`;
+  const { formatMessage } = props.intl;
+
+  if (props.id % 2 == 0) {
+    return <PackageRightComponent
+      name={props.name}
+      url={url}
+      image={props.image}
+      description={props.description}
+      short_description={props.short_description}
+      price={props.price}
+      cta={formatMessage(messages.read_more_and_book)}
+    />
+  }
+  else {
+    return <PackageLeftComponent
+      name={props.name}
+      url={url}
+      image={props.image}
+      description={props.description}
+      short_description={props.short_description}
+      price={props.price}
+      cta={formatMessage(messages.read_more_and_book)}
+    />
+  }
 }
 
 export default injectIntl(PackagePreviewComponent);

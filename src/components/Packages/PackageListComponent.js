@@ -1,48 +1,34 @@
 import React from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import PackagesPreviewComponent from './PackagePreviewComponent';
 
-const bikePkgs = [
-  {
-    id:0,
-    price: 1895,
-    messages: defineMessages({
-      name: {
-        id: 'booking.packages.matupplevelsen.name',
-        defaultMessage: 'Matupplevelsen längs Göta kanal'
-      },
-      text: {
-        id: 'booking.packages.matupplevelsen.text',
-        defaultMessage: "This is a nice package!"
-      },
-      short_text: {
-        id: 'booking.packages.matupplevelsen.short_text',
-        defaultMessage:"A nice package!"
-      },
-    }),
-    imageUrl: './img/packages/matupplevelsen.jpg',
-    slug: ""
-  },
-]
+import packages from './messages';
 
 const PackageListComponent = (props) => {
   const { formatMessage } = props.intl;
+  const packageList = ['matupplevelsen', ];
   return (
-    <div>
-      {
-        bikePkgs.map((pkg) => {
-          <PackagesPreviewComponent
-            name={formatMessage(pkg.messages.name)}
-            description={formatMessage(pkg.messages.text)}
-            short_description={formatMessage(pkg.messages.short_text)}
-            price={pkg.price}
-            slug={pkg.slug}
-            image={pkg.imageUrl}
-            key={pkg.id}
-          />
-        })
-      }
+    <div className="row">
+      <div className="container-fluid">
+        {
+          packageList.map((pkg) => {
+
+            return (
+              <PackagesPreviewComponent
+                id={packages[pkg].id}
+                name={formatMessage(packages[pkg].messages.name)}
+                description={formatMessage(packages[pkg].messages.short_text)}
+                short_description={formatMessage(packages[pkg].messages.summary)}
+                price={packages[pkg].price}
+                slug={packages[pkg].slug}
+                image={packages[pkg].imageUrl}
+                key={packages[pkg].id}
+              />
+            );
+          })
+        }
+      </div>
     </div>
   );
 }

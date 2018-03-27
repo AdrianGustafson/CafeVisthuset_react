@@ -7,6 +7,10 @@ const messages = defineMessages({
     id: 'app.cta.read_more',
     defaultMessage: 'Läs mer!'
   },
+  read_more_and_book: {
+    id: 'app.cta.read_more_and_book',
+    defaultMessage: 'Läs mer och boka!'
+  },
   close: {
     id: 'app.cta.close',
     defaultMessage: 'Stäng'
