@@ -7,7 +7,7 @@ import packages from './messages';
 
 const PackageListComponent = (props) => {
   const { formatMessage } = props.intl;
-  const packageList = ['matupplevelsen', ];
+  const packageList = ['matupplevelsen', 'storturen'];
   return (
     <div className="row">
       <div className="container-fluid">

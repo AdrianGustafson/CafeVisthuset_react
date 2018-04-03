@@ -22,7 +22,7 @@ class MenuItemList extends React.Component {
           defaultMessage: "This is a Placeholder with **markdown**!"
         }
       }),
-      'image': "./img/menu/coffee.jpg"
+      'image': "static/img/menu/coffee.jpg"
   },
     {
       id: 1,
@@ -40,7 +40,7 @@ class MenuItemList extends React.Component {
           defaultMessage: "This is a Placeholder!"
         }
       }),
-      image: "./img/menu/brunchpizza.jpg"
+      image: "static/img/menu/brunchpizza.jpg"
   },
     {
       id: 2,
@@ -58,7 +58,7 @@ class MenuItemList extends React.Component {
           defaultMessage: "This is a Placeholder!"
         }
       }),
-      image: "./img/menu/solglass.jpg"
+      image: "static/img/menu/solglass.jpg"
   },
     {
       id: 3,
@@ -76,7 +76,7 @@ class MenuItemList extends React.Component {
         defaultMessage: "This is a Placeholder!"
       }
     }),
-      image: "./img/menu/bread.jpg"
+      image: "static/img/menu/bread.jpg"
     }
   ]
 
@@ -85,7 +85,6 @@ class MenuItemList extends React.Component {
     <div>
       {
         itemList.map( item => {
-          console.log(item);
           return (
             <MenuItemComponent
               title={formatMessage(item.messages.title)}

@@ -47,6 +47,15 @@ const messages = defineMessages({
   message: {
     id: 'app.form.message',
     defaultMessage: 'Meddelande till oss...'
+  },
+  // Error pages
+  NotFoundTitle: {
+    id: 'app.NotFoundTitle',
+    defaultMessage: 'Sidan finns inte...'
+  },
+  NotFoundMessage: {
+    id: 'app.NotFoundMessage',
+    defaultMessage: 'Det verkar som att du hamnat på en sida som inte finns...'
   }
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-intl-redux';
 import { addLocaleData } from 'react-intl';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from './store';
 
@@ -21,7 +21,7 @@ addLocaleData([...de, ...en, ...no, ...sv]);
 ReactDOM.render((
   <Provider store={store}>
       <BrowserRouter>
-        <Route path="/" component={App} />
+        <App />
       </BrowserRouter>
   </Provider>
 ), document.getElementById('root'));

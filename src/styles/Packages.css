@@ -10,7 +10,6 @@
 .package-preview__image {
   display: inline-block;
   padding: 0%;
-  float: left;
 }
 
 .package-preview__price {

@@ -84,12 +84,12 @@ const BikeContent = (props) => {
     <div>
       <PriceInfo />
       <Info
-        image="./img/bikes/biking.jpg"
+        image="static/img/bikes/biking.jpg"
         title= {formatMessage(pages.bikes.bikeInfoTitle)}
         text={formatMessage(pages.bikes.bikeInfoBody)}
         alt={formatMessage(pages.bikes.bikeInfoAlt)}/>
       <Info
-        image="./img/bikes/lunchboxes.jpg"
+        image="static/img/bikes/lunchboxes.jpg"
         title={formatMessage(pages.bikes.lunchInfoTitle)}
         text={formatMessage(pages.bikes.lunchInfoBody)}
         alt={formatMessage(pages.bikes.lunchInfoAlt)}/>

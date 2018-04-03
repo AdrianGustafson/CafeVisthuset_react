@@ -46,20 +46,20 @@ class Home extends React.Component {
         <div className="d-md-flex p-2 justify-content-around content">
           <PagePreviewComponent
             redirectURL="/menu"
-            image='img/menu/coffee.jpg'
+            image='static/img/menu/coffee.jpg'
             title={ formatMessage(pages.home.menuTitle)}
             text={ formatMessage(pages.home.menuText)}
           />
 
           <PagePreviewComponent
             redirectURL="/bikes"
-            image="img/Visthuset_biking.jpg"
+            image="static/img/Visthuset_biking.jpg"
             title= { formatMessage(pages.home.bikesTitle)}
             text={ formatMessage(pages.home.bikesText)} />
 
           <PagePreviewComponent
             redirectURL="/packages"
-            image='img/Gota_kanal_Juno_locks.jpg'
+            image='static/img/Gota_kanal_Juno_locks.jpg'
             title={ formatMessage(pages.home.packagesTitle) }
             text={ formatMessage(pages.home.packagesText) } />
 

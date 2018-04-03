@@ -3,7 +3,7 @@
 // ========================================================
 
 // Translated strings
-import localeData from '../../public/locales/data.json'
+import localeData from '../../public/static/locales/data.json'
 
 const initialState = {
   intl: {

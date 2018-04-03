@@ -10,7 +10,7 @@ class Banner extends React.Component {
     return (
       <div className="banner">
         <div className="banner-image">
-          <img src='./img/home/Visthuset-hover.jpg' alt=""/>
+          <img src='static/img/home/Visthuset-hover.jpg' alt=""/>
           <div className="banner-content">
             <h1 id="banner-heading">
               <FormattedMessage

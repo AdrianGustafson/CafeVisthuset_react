@@ -106,6 +106,7 @@ class BikeRentalForm extends React.Component {
     const { currentLocale } = this.props;
     const { formatMessage, formatHTMLMessage } = this.props.intl;
 
+    // Bike form specific messages
     const formMessages = defineMessages({
       title: {
         id:'bikes.booking.form.title',
