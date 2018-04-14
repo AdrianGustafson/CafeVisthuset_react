@@ -4,12 +4,14 @@ import {Link} from 'react-router-dom';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 
 import Calendar from 'react-calendar';
+import Recaptcha from 'react-recaptcha';
 
 import agent from '../../agent';
 import ListErrors from '../ListErrors';
 import ModalWrapper from '../ModalWrapper';
 
 import { messages } from '../../messages';
+import { recaptcha_site_key as sitekey } from '../../../public/assets/keys';
 
 const mapStateToProps = state => ({
   ...state.booking,
@@ -17,13 +19,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  onSubmitForm: state =>
+    dispatch({ type: 'BOOK_BIKE', payload: agent.Booking.bike(state) })
 })
 
 const BikeRentalField = ({ type, amount }) => {
-  const selectType = ev => {
-    console.log(ev.target.value);
-  }
   return (
     <div className="input-group">
       <div className="input-group-btn">
@@ -66,7 +66,8 @@ class BikeRentalForm extends React.Component {
         child_seats: 0,
         bike_trailers: 0,
         lunches: []
-      }
+      },
+      verified: true
     };
 
     this.updateState = field => ev => {
@@ -96,15 +97,25 @@ class BikeRentalForm extends React.Component {
     this.submitForm = ev => {
       ev.preventDefault();
       const state = Object.assign({}, this.state);
-      //this.props.onSubmitForm(state);
-      console.log(state);
+      if (state.verified) {
+
+        console.log(state);
+        this.props.onSubmitForm(state);
+      }
     };
+
+    this.verifyCallback = (response) => {
+      if (response) {
+        this.setState({ verified: true })
+      }
+    }
   }
 
   render() {
     const dates = [this.state.start_date, this.state.end_date];
     const { currentLocale } = this.props;
     const { formatMessage, formatHTMLMessage } = this.props.intl;
+    let recaptchainstance2;
 
     // Bike form specific messages
     const formMessages = defineMessages({
@@ -199,7 +210,8 @@ class BikeRentalForm extends React.Component {
                   type="text"
                   placeholder={formatMessage(messages.first_name)}
                   value={this.state.first_name}
-                  onChange={this.updateState('first_name')} />
+                  onChange={this.updateState('first_name')}
+                  required />
               </fieldset>
 
               <fieldset className="form-group">
@@ -208,7 +220,8 @@ class BikeRentalForm extends React.Component {
                   type="text"
                   placeholder={formatMessage(messages.last_name)}
                   value={this.state.last_name}
-                  onChange={this.updateState('last_name')} />
+                  onChange={this.updateState('last_name')}
+                  required />
               </fieldset>
 
               <fieldset className="form-group">
@@ -226,7 +239,8 @@ class BikeRentalForm extends React.Component {
                   type="email"
                   placeholder={formatMessage(messages.email)}
                   value={this.state.email}
-                  onChange={this.updateState('email')} />
+                  onChange={this.updateState('email')}
+                  required />
               </fieldset>
 
               <fieldset className="form-group">
@@ -281,13 +295,24 @@ class BikeRentalForm extends React.Component {
                 </button></span>
                 <ModalWrapper id="PRIVACY_POLICY" />
               </fieldset>
+
+              <fieldset className="form-group">
+                <Recaptcha
+                  ref={e => recaptchainstance2 = e}
+                  sitekey={sitekey}
+                  render="explicit"
+                  onloadCallback={this.verifyCallback}
+                  verifyCallback={this.verifyCallback}
+                />
+              </fieldset>
+
             </fieldset>
 
             <fieldset className="form-group">
               <button
                 className="visthuset-primary btn btn-lg btn-primary pull-xs-right"
                 type="submit"
-                onClick={this.onSubmit}>
+                disabled={this.state.inProgress}>
                 {formatMessage(messages.book)}
               </button>
             </fieldset>

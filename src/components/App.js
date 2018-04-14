@@ -9,6 +9,7 @@ import agent from '../agent';
 import '../styles/App.css';
 import '../styles/Bikes.css';
 import '../styles/Calendar.css';
+import '../styles/Contact.css';
 import '../styles/index.css';
 import '../styles/Flags.css';
 import '../styles/Footer.css';
@@ -22,6 +23,7 @@ import '../styles/Packages.css';
 import NotFound from './NotFound';
 import About from './About';
 import Bikes from './Bikes';
+import Contact from './Contact';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
@@ -66,6 +68,7 @@ class App extends Component {
 
             <Route path="/about" component={About}/>
             <Route path="/bikes" component={Bikes}/>
+            <Route path="/contact" component={Contact} />
             <Route path="/login" component={Login}/>
             <Route path="/menu" component={Menu} />
             <Route exact path="/packages" component={Packages} />

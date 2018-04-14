@@ -32,6 +32,10 @@ const messages = defineMessages({
     id: 'app.form.privacy',
     defaultMessage: 'Läs om hur vi hanterar dina personuppgifter'
   },
+  name: {
+    id: 'app.form.name',
+    defaultMessage: 'Namn'
+  },
   first_name: {
     id: 'app.form.first_name',
     defaultMessage: 'Förnamn'
@@ -51,6 +55,10 @@ const messages = defineMessages({
   message: {
     id: 'app.form.message',
     defaultMessage: 'Meddelande till oss...'
+  },
+  send: {
+    id: 'app.form.send',
+    defaultMessage: 'Skicka'
   },
   // Error pages
   NotFoundTitle: {
@@ -87,6 +95,10 @@ const messages = defineMessages({
 // Pages
 const pages = {
     packages: defineMessages({
+      name: {
+        id: 'app.page.packages',
+        defaultMessage: 'Paketupplevelser'
+      },
       supertitle: {
         id: "booking.packages.supertitle",
         defaultMessage: "Paketupplevelser | Café Visthuset"
@@ -97,6 +109,10 @@ const pages = {
       }
     }),
     menu: defineMessages({
+      name: {
+        id: "app.page.menu",
+        defaultMessage: 'Meny'
+      },
       supertitle: {
         id: "menu.supertitle",
         defaultMessage: "Café Visthuset | Meny"
@@ -107,6 +123,10 @@ const pages = {
       }
     }),
     home: defineMessages({
+      name: {
+        id: "app.page.home",
+        defaultMessage: 'Hem'
+      },
       menuTitle: {
         id: "Home.preview.menu.title",
         defaultMessage: "Vår meny"
@@ -133,6 +153,10 @@ const pages = {
       }
     }),
     bikes: defineMessages({
+      name:{
+        id: 'app.page.bikes',
+        defaultMessage: 'Cykeluthyrning'
+      },
       supertitle: {
         id: "booking.bikes.supertitle",
         defaultMessage: "Cykeluthyrning | Café Visthuset"
@@ -166,6 +190,24 @@ const pages = {
       lunchInfoAlt: {
         id: 'booking.bikes.lunchinfo.alt',
         defaultMessage: "Lunchpaket från Cafe Visthuset"
+      }
+    }),
+    events: defineMessages({
+      name: {
+        id: 'app.page.events',
+        defaultMessage: 'Evenemang'
+      }
+    }),
+    about: defineMessages({
+      name: {
+        id: 'app.page.about',
+        defaultMessage: 'Om oss'
+      }
+    }),
+    contact: defineMessages ({
+      name: {
+        id: 'app.page.contact',
+        defaultMessage: 'Kontakt'
       }
     })
   };

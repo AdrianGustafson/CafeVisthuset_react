@@ -32,7 +32,18 @@ const Auth = {
     requests.post('/users/guest', {'user': { email, password }})
 }
 
+const Booking = {
+  bike: booking =>
+    requests.post('/cafe-visthuset/bookings/bike', {"booking": { booking }}),
+}
+
+const Email = {
+  contact: (name, email, message) =>
+    requests.post('/contact', {"email": {name, email, message }}),
+}
 export default {
   Auth,
+  Booking,
+  Email,
   setToken: _token => { token = _token; }
 };

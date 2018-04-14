@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateIntl } from 'react-intl-redux';
 import { defineMessages, injectIntl } from 'react-intl';
+import { pages } from '../messages';
 
 import store from '../store';
 
@@ -50,37 +51,6 @@ class Header extends React.Component {
   render() {
     const { formatMessage } = this.props.intl;
 
-    const messages = defineMessages({
-      menu: {
-        id: "nav.menu",
-        defaultMessage: 'Meny'
-      },
-      home: {
-        id: "nav.home",
-        defaultMessage: 'Hem'
-      },
-      bikes: {
-        id: 'nav.bikes',
-        defaultMessage: 'Cykeluthyrning'
-      },
-      'packages': {
-        id: 'nav.packages',
-        defaultMessage: 'Paketupplevelser'
-      },
-      'events': {
-        id: 'nav.events',
-        defaultMessage: 'Evenemang'
-      },
-      about: {
-        id: 'nav.about',
-        defaultMessage: 'Om oss'
-      },
-      contact: {
-        id: 'nav.contact',
-        defaultMessage: 'Kontakt'
-      }
-    });
-
     return (
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -99,7 +69,7 @@ class Header extends React.Component {
                   to="/"
                   className="nav-link"
                   activeClassName='active'>
-                  {formatMessage(messages.home)}
+                  {formatMessage(pages.home.name)}
                 </NavLink>
               </li>
 
@@ -108,7 +78,7 @@ class Header extends React.Component {
                   to="/menu"
                   className="nav-link"
                   activeClassName='active'>
-                  {formatMessage(messages.menu)}
+                  {formatMessage(pages.menu.name)}
                 </NavLink>
               </li>
 
@@ -117,7 +87,7 @@ class Header extends React.Component {
                   to="/bikes"
                   className="nav-link"
                   activeClassName="active">
-                  {formatMessage(messages.bikes)}
+                  {formatMessage(pages.bikes.name)}
                 </NavLink>
               </li>
 
@@ -126,7 +96,7 @@ class Header extends React.Component {
                   to="/packages"
                   className="nav-link"
                   activeClassName="active">
-                  {formatMessage(messages.packages)}
+                  {formatMessage(pages.packages.name)}
                 </NavLink>
               </li>
 
@@ -135,7 +105,7 @@ class Header extends React.Component {
                   to="/"
                   className="nav-link"
                   activeClassName="active">
-                  {formatMessage(messages.events)}
+                  {formatMessage(pages.events.name)}
                 </NavLink>
               </li>
 
@@ -144,16 +114,16 @@ class Header extends React.Component {
                   to="/about"
                   className="nav-link"
                   activeClassName="active">
-                  {formatMessage(messages.about)}
+                  {formatMessage(pages.about.name)}
                 </NavLink>
               </li>
 
               <li className="nav-item">
                 <NavLink
-                  to="/"
+                  to="/contact"
                   className="nav-link"
                   activeClassName="active">
-                  {formatMessage(messages.contact)}
+                  {formatMessage(pages.contact.name)}
                 </NavLink>
               </li>
             </ul>

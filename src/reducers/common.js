@@ -12,8 +12,8 @@ export default (state = defaultState, action) => {
         appLoaded: true,
         currentUser: action.payload ? action.payload.user : null
       };
-    case 'REDIRECT':
-      return { ...state, redirectTo: null };
+    case 'SEND_CONTACT_EMAIL':
+      return { ...state };
     case 'LOGIN':
     case 'REGISER':
       return {

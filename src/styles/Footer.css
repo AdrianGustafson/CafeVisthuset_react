@@ -1,10 +1,41 @@
 footer {
   background-color: #C2CCCC;
 }
+footer .border-row {
+  border-bottom: 1px solid #FFFFFF;
+}
+
 footer .row {
   bottom: 25px;
-  padding:3%;
-  border-bottom: 1px solid #FFFFFF;
+  padding: 3%;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer a:hover {
+  color: black;
+}
+.sitemap-link {
+  list-style: none;
+  text-align: left;
+}
+.sitemap-link::before {
+  content: '- '
+}
+
+.contact-widget {
+  background-color: #EDEFEF;
+  padding: 1%;
+  height: 480px;
+}
+
+.contact-widget__text {
+  position: relative;
+  top:30%;
+  font-size: 1.2rem;
 }
 
 .logo {

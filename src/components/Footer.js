@@ -1,9 +1,15 @@
 import React from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
+
+import FaceBookComponent from './Facebook';
+//import { TripAdvisorBadgeComponent } from './TripAdvisor';
+import ContactWidget from './ContactWidget';
 
 import logo from '../img/logos/logo.jpg';
 import gk_officiell_partner from '../img/logos/gk_officiell_partner.png';
 import vastsverige_svensk from '../img/logos/vastsverige_svensk.jpg';
+import { pages } from '../messages';
 
 const AdressComponent = () => {
   return (
@@ -19,13 +25,6 @@ const AdressComponent = () => {
   );
 }
 
-const SiteMapComponent = () => {
-  return (
-    <div className="col-md-8 col-xs-12 sitemap-component">
-
-    </div>
-  );
-}
 const LogoComponent = () => {
   return (
     <div className="col-xs-12 col-md-4 logo-component">
@@ -38,22 +37,53 @@ const LogoComponent = () => {
   );
 }
 
-const Footer = () => {
+const SiteMapComponent = ({ formatMessage }) => {
   return (
-  <footer>
-    <div className="container">
-      <div className="row">
-        <SiteMapComponent />
-
-        <AdressComponent />
-      </div>
-      <div className="row">
-        <LogoComponent />
-      </div>
-
+    <div className="col-md-8 col-xs-12 sitemap-component">
+      <ul className="list-group col-xs-12 col-md-4">
+        <li className="sitemap-link"><Link to='/'>{formatMessage(pages.home.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/menu'>{formatMessage(pages.menu.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/bikes'>{formatMessage(pages.bikes.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/packages'>{formatMessage(pages.packages.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/events'>{formatMessage(pages.events.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/about'>{formatMessage(pages.about.name)}</Link></li>
+        <li className="sitemap-link"><Link to='/pages'>{formatMessage(pages.contact.name)}</Link></li>
+      </ul>
     </div>
-  </footer>
   );
 }
 
-export default Footer;
+const SocialWidgetComponent = () => {
+  return (
+      <div className="col-xs-12 col-md-4">
+        <FaceBookComponent
+          tabs=''
+          show_facepile="true"
+        />
+      </div>
+  )
+};
+
+const Footer = ( props ) => {
+  const { formatMessage } = props.intl;
+  return (
+    <footer>
+      <div className="container">
+        <div className="row border-row">
+          <SiteMapComponent
+            formatMessage={formatMessage}/>
+
+          <AdressComponent />
+        </div>
+        <div className="row border-row">
+          <LogoComponent />
+          <SocialWidgetComponent />
+
+        </div>
+
+      </div>
+    </footer>
+  );
+}
+//<ContactWidget/>
+export default injectIntl(Footer);
