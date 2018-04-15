@@ -57,7 +57,6 @@ class App extends Component {
 
   render() {
     if (this.props.appLoaded) {
-      console.log(this.props);
       return (
         <div className="App">
           <Header

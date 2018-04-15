@@ -16,3 +16,34 @@
   font-size:1.3em;
   font-weight: bold;
 }
+
+.package__included-list {
+  margin-bottom: 2%;
+}
+
+.package__included-list-item {
+  background-color: #C2CCCC;
+}
+
+.package__included-list-header {
+  background-color: #EDEFEF;
+}
+
+.package__image {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.package__image-title {
+  position: absolute;
+  top: 0%;
+  background: rgb(255,255,255);
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+}
+
+.package-form h1 {
+  font-size: 1.75em;
+}

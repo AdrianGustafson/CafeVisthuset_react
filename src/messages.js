@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'app.cta.book',
     defaultMessage: 'boka!'
   },
+  book_here: {
+    id: 'app.cta.book_here',
+    defaultMessage: 'Boka här'
+  },
   // Form messages
   newsletter: {
     id: 'app.form.newsletter',
@@ -56,6 +60,27 @@ const messages = defineMessages({
   NotFoundMessage: {
     id: 'app.NotFoundMessage',
     defaultMessage: 'Det verkar som att du hamnat på en sida som inte finns...'
+  },
+  // Info
+  includedTitle: {
+    id: 'app.info.includedTitle',
+    defaultMessage: 'Det här ingår'
+  },
+  priceTitle: {
+    id: 'app.info.priceTitle',
+    defaultMessage: 'Pris'
+  },
+  priceDouble: {
+    id: 'app.info.price.double',
+    defaultMessage: 'Pris för delad logi'
+  },
+  priceSingle: {
+    id: 'app.info.price.single',
+    defaultMessage: 'Pris för enkelrum'
+  },
+  priceChild: {
+    id: 'app.info.price.child',
+    defaultMessage: 'Barnpris'
   }
 });
 

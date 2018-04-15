@@ -20,7 +20,7 @@ const PackageListComponent = (props) => {
                 name={formatMessage(packages[pkg].messages.name)}
                 description={formatMessage(packages[pkg].messages.short_text)}
                 short_description={formatMessage(packages[pkg].messages.summary)}
-                price={packages[pkg].price}
+                price={packages[pkg].price.priceDouble}
                 slug={packages[pkg].slug}
                 image={packages[pkg].imageUrl}
                 key={packages[pkg].id}
