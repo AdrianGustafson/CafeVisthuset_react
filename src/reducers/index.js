@@ -15,5 +15,5 @@ export default combineReducers({
   home,
   intl: intlReducer,
   locales,
-  routing: routerReducer
+  router: routerReducer
 });

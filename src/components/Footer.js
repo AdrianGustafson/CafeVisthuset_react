@@ -78,7 +78,7 @@ const Footer = ( props ) => {
         <div className="row border-row">
           <LogoComponent />
           <SocialWidgetComponent />
-
+          <ContactWidget />
         </div>
 
       </div>

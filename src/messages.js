@@ -23,7 +23,11 @@ const messages = defineMessages({
     id: 'app.cta.book_here',
     defaultMessage: 'Boka här'
   },
-  // Form messages
+  send: {
+    id: 'app.form.send',
+    defaultMessage: 'Skicka'
+  },
+  // Form and confirmation messages
   newsletter: {
     id: 'app.form.newsletter',
     defaultMessage: 'Vill du ha nyheter och erbjudanden'
@@ -54,11 +58,15 @@ const messages = defineMessages({
   },
   message: {
     id: 'app.form.message',
-    defaultMessage: 'Meddelande till oss...'
+    defaultMessage: 'Meddelande till oss'
   },
-  send: {
-    id: 'app.form.send',
-    defaultMessage: 'Skicka'
+  start_date: {
+    id: 'app.form.start_date',
+    defaultMessage: 'Startdatum'
+  },
+  number_of_days: {
+    id: 'app.form.number_of_days',
+    defaultMessage: 'Antal dagar'
   },
   // Error pages
   NotFoundTitle: {

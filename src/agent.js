@@ -34,7 +34,7 @@ const Auth = {
 
 const Booking = {
   bike: booking =>
-    requests.post('/cafe-visthuset/bookings/bike', {"booking": { booking }}),
+    requests.post('/cafe-visthuset/booking/bike', booking),
 }
 
 const Email = {

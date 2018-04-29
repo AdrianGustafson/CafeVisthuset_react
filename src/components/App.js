@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { push } from 'react-router-redux';
 
 import { FormattedMessage } from 'react-intl';
 import agent from '../agent';
+import store from '../store';
 
 // Styles
 import '../styles/App.css';
@@ -23,6 +25,7 @@ import '../styles/Packages.css';
 import NotFound from './NotFound';
 import About from './About';
 import Bikes from './Bikes';
+import BikeConfirmation from './Bikes/Confirmation';
 import Contact from './Contact';
 import Footer from './Footer';
 import Header from './Header';
@@ -48,6 +51,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class App extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.redirectTo) {
+      store.dispatch(push(nextProps.redirectTo));
+      this.props.onRedirect();
+    }
+  }
+
   componentWillMount() {
     const token = window.localStorage.getItem('jwt');
     if (token) {
@@ -64,10 +74,10 @@ class App extends Component {
           <Header
             appName={this.props.appName} />
           <Switch>
-            <Route exact path='/' component={Home} />
-
+            <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route path="/bikes" component={Bikes}/>
+            <Route exact path="/bikes" component={Bikes}/>
+            <Route path="/bikes/thanks" component={BikeConfirmation}/>
             <Route path="/contact" component={Contact} />
             <Route path="/login" component={Login}/>
             <Route path="/menu" component={Menu} />

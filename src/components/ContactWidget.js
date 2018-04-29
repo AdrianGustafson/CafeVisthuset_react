@@ -21,7 +21,7 @@ class ContactWidget extends React.Component {
       name: '',
       email: '',
       message: '',
-      verified: false,
+      verified: true,
       sent: false
     }
 
@@ -110,16 +110,6 @@ class ContactWidget extends React.Component {
               </fieldset>
 
               <fieldset className="form-group">
-                <Recaptcha
-                  ref={e => recaptchainstance = e }
-                  sitekey={sitekey}
-                  render="onload"
-                  onloadCallback={this.verifyCallback}
-                  verifyCallback={this.verifyCallback}
-                />
-              </fieldset>
-
-              <fieldset className="form-group">
                 <button
                   className="visthuset-primary btn btn-lg btn-primary pull-xs-right"
                   type="submit"
@@ -136,5 +126,15 @@ class ContactWidget extends React.Component {
     }
   }
 }
-
+/*
+<fieldset className="form-group">
+  <Recaptcha
+    ref={e => recaptchainstance = e }
+    sitekey={sitekey}
+    render="onload"
+    onloadCallback={this.verifyCallback}
+    verifyCallback={this.verifyCallback}
+  />
+</fieldset>
+*/
 export default connect(()=>({}), mapDispatchToProps)(injectIntl(ContactWidget));

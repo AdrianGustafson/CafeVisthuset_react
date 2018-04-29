@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { push } from 'react-router-redux';
 
 import Calendar from 'react-calendar';
 import Recaptcha from 'react-recaptcha';
@@ -15,12 +16,16 @@ import { recaptcha_site_key as sitekey } from '../../../public/assets/keys';
 
 const mapStateToProps = state => ({
   ...state.booking,
-  currentLocale: state.intl.locale
+  currentLocale: state.intl.locale,
 })
 
 const mapDispatchToProps = dispatch => ({
   onSubmitForm: state =>
-    dispatch({ type: 'BOOK_BIKE', payload: agent.Booking.bike(state) })
+    dispatch({ type: 'BOOK_BIKE', payload: agent.Booking.bike(state) }),
+  onRedirect: (url) =>{
+    dispatch(push(url));
+  }
+
 })
 
 const BikeRentalField = ({ type, amount }) => {
@@ -65,7 +70,9 @@ class BikeRentalForm extends React.Component {
       extras: {
         child_seats: 0,
         bike_trailers: 0,
-        lunches: []
+      },
+      meals: {
+
       },
       verified: true
     };
@@ -98,9 +105,8 @@ class BikeRentalForm extends React.Component {
       ev.preventDefault();
       const state = Object.assign({}, this.state);
       if (state.verified) {
-
-        console.log(state);
         this.props.onSubmitForm(state);
+        this.props.onRedirect('/bikes/thanks');
       }
     };
 
@@ -247,7 +253,7 @@ class BikeRentalForm extends React.Component {
                 <textarea
                   className="form-control"
                   rows="6"
-                  placeholder={formatMessage(messages.message)}
+                  placeholder={`${formatMessage(messages.message)}...`}
                   value={this.state.message}
                   onChange={this.updateState('message')}>
                 </textarea>
@@ -323,4 +329,4 @@ class BikeRentalForm extends React.Component {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(BikeRentalForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectIntl(BikeRentalForm)));

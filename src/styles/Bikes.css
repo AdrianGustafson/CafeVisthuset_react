@@ -40,3 +40,26 @@
 .modal-button-link {
   display: inline;
 }
+
+.confirmation__list-item {
+  list-style: none;
+  text-align: left;
+}
+
+.confirmation__category_header {
+  list-style: none;
+  text-align: left;
+  font-size: 1.1rem;
+  border-top: .5px solid grey;
+  padding-top: 10px;
+  margin-top: 15px;
+  margin-right: 50%;
+}
+
+.confirmation__info-group {
+  margin-bottom: 25px;
+}
+
+.confirmation__info-group span::before {
+  content: '   ';
+}

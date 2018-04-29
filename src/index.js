@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-intl-redux';
 import { addLocaleData } from 'react-intl';
-import { BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
-import store from './store';
+import { store, history } from './store';
 
 import App from './components/App';
 
@@ -20,9 +21,11 @@ addLocaleData([...de, ...en, ...no, ...sv]);
 
 ReactDOM.render((
   <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Route path='/' component={App} />
+        </Switch>
+      </ConnectedRouter>
   </Provider>
 ), document.getElementById('root'));
 registerServiceWorker();
